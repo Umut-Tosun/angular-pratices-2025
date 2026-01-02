@@ -1,0 +1,32 @@
+<h1>Todo App</h1>
+
+
+@if(!isUpdateFromActive) {
+ <div>
+  <label>Work</label>
+  <input [(ngModel)]="taskName" />
+  <button (click)="saveTask()">Add</button>
+</div>
+}@else {
+<div>
+  <label>Update Work</label>
+  <input [(ngModel)]="updatedTaskName" />
+  <button (click)="updateTask(updatedIndex)">Update</button>
+</div>
+}
+
+<div>
+  <h3>Todo List</h3>
+  <ul>
+    @for(task of todos; track task) {
+      <li>
+        {{task}}
+        @if(!isUpdateFromActive) {
+           <button (click)="getTask($index)">update</button>
+        <button (click)="deleteTask($index)">Delete Task</button>
+        }
+      
+      </li>
+    }
+  </ul>
+</div>

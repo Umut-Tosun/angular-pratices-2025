@@ -1,0 +1,42 @@
+<h1>Kredi Hesaplama</h1>
+
+<div>
+  <label>Kredi Tutarı:</label>
+  <input [(ngModel)]="creditAmount" type="number" />
+</div>
+<div>
+  <label>Taksit Sayısı:</label>
+  <select [(ngModel)]="selectedInstallmentOption">
+    @for (option of installmentOptions; track option) {
+      <option [value]="option">{{option}}</option>
+    }
+  </select>
+</div>
+
+<div>
+  <button (click)="calculate()">Hesapla</button>
+</div>
+
+@if (paymentPlan.length > 0) {
+  <div>
+    <h2>Ödeme Planı</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Taksit No</th>
+          <th>Taksit Tutarı (₺)</th>
+          <th>Kalan Tutar (₺)</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (payment of paymentPlan; track payment.installmentNo) {
+          <tr>
+            <td>{{payment.installmentNo}}</td>
+            <td>{{payment.amount}}</td>
+            <td>{{payment.remainingAmount}}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}

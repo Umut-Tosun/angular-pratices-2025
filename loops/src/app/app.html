@@ -1,0 +1,14 @@
+<h1>loops</h1>
+<ul>
+  @for (item of todos; track item) {
+  <li>{{ item }} - {{ $index }} {{ $first }} {{ $last}}  </li>
+  }
+  @for (item of todosWithTwoValues; track item) {
+  <li>
+    {{ item[0] }} - 
+    <span [ngStyle]="{'color': item ? 'green' : 'red'}">
+      {{ item[1] }}
+    </span>
+  }
+ 
+</ul>
